@@ -1,26 +1,67 @@
-# Archivo quality-gates.yaml
-quality_gate:
-  rules:
-    - code_quality:
-        threshold: 90
-    - unit_test_coverage:
-        threshold: 80
-    - security_scan:
-        threshold: 0
-  performance:
-    - throughput:
-        error:
-            unstable: ''
-            failed: -1
-        response:
-            unstable: ''
-        
-jobs:
-  - build:
-      stage: build
-      script:
-        - # Build your project here
+[10:45] Lorenzo Gomis, F.
+performance:
+
+  throughput:
+
+    error:
+
+      unstable: 0
+
+      failed: 5
+
+    response:
+
+      unstable: 'default.jtl:100'
  
+security:
+
+  static:
+
+    high:
+
+      unstable: 0
+
+      failed: 0
+
+    medium:
+
+      unstable: 0
+
+      failed: 5
+
+  dynamic:
+
+    high:
+
+      unstable: 0
+
+      failed: 0
+
+    medium:
+
+      unstable: 0
+
+      failed: 5
+
+  dependencies:
+
+    critical:
+
+      unstable: 10
+
+      failed: 10
+
+    high:
+
+      unstable: 10
+
+      failed: 10
+
+    medium:
+
+      unstable: 15
+
+      failed: 15
   - test:
       stage: test
       script:
